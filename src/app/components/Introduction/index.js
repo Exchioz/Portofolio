@@ -14,7 +14,7 @@ export default function Introduction() {
           </span>
         </h1>
         <div className="font-semibold text-sky-400 leading-relaxed mb-14">
-          <span className="text-white">Im a </span>
+          <span className="text-white">Im </span>
           <span className="text-sky-400">
             <TypingEffect />
           </span>
