@@ -7,13 +7,13 @@ export default function AboutMe() {
   return (
     <div>
       <p className="text-justify">
-        I am a graduate of Universitas Pendidikan Indonesia with a Bachelor of
-        Engineering degree in Computer Engineering, specializing in Intelligent
-        Devices. During my studies, I learned about both software and hardware
-        development. I focused on Python programming for developing deep
-        learning models using TensorFlow and PyTorch, and web development for
-        backend services using the Flask framework. I have a strong interest in
-        Python, which has driven my work in AI and web development.
+        Final semester student of Universitas Pendidikan Indonesia with a
+        Bachelor of Engineering degree in Computer Engineering, specializing in
+        Intelligent Devices. During my studies, I learned about both software
+        and hardware development. I focused on Python programming for developing
+        deep learning models using TensorFlow and PyTorch, and web development
+        for backend services using the Flask framework. I have a strong interest
+        in Python, which has driven my work in AI and web development.
       </p>
       <div className="mt-8 flex flex-row flex-wrap md:flex-col md:items-start">
         <Link

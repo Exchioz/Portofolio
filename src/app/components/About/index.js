@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import AboutMe from "./Tabs/aboutme";
 import Experiences from "./Tabs/experiences";
 import Educations from "./Tabs/educations";
@@ -15,6 +15,30 @@ export default function Page() {
 
   const [activeTab, setActiveTab] = useState(tabs[0].id);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const buttonRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        !buttonRef.current.contains(event.target)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isDropdownOpen && buttonRef.current && dropdownRef.current) {
+      dropdownRef.current.style.width = `${buttonRef.current.offsetWidth}px`;
+    }
+  }, [isDropdownOpen]);
 
   const renderContent = () => {
     const activeTabData = tabs.find((tab) => tab.id === activeTab);
@@ -22,21 +46,27 @@ export default function Page() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-auto w-auto py-14">
+    <div className="flex flex-col md:flex-row h-auto py-14">
       {/* Dropdown for small screens */}
-      <div className="block md:hidden w-full p-4">
+      <div className="block md:hidden w-full p-4 relative">
         <button
-          className="w-full bg-gray-700 text-gray-300 rounded-2xl p-4 mb-4"
+          ref={buttonRef}
+          className={`w-full text-gray-300 rounded-2xl p-4 mb-4 ${
+            isDropdownOpen ? "bg-blue-500" : "bg-gray-700"
+          }`}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
           {tabs.find((tab) => tab.id === activeTab)?.label}
         </button>
         {isDropdownOpen && (
-          <div className="bg-gray-700 rounded-2xl">
+          <div
+            ref={dropdownRef}
+            className="absolute z-10 bg-gray-700 rounded-2xl my-2 w-full"
+          >
             {tabs.map((tab) => (
               <div
                 key={tab.id}
-                className={`p-4 mb-2 cursor-pointer ${
+                className={`p-4 rounded-2xl cursor-pointer ${
                   activeTab === tab.id
                     ? "bg-blue-500 text-white"
                     : "text-gray-300"
@@ -71,8 +101,8 @@ export default function Page() {
       </div>
 
       {/* Content area */}
-      <div className="w-full md:w-3/4 p-4 h-dvh">
-        <div className="text-white self-start">{renderContent()}</div>
+      <div className="w-auto md:w-3/4 p-4 flex-1 overflow-y-auto">
+        <div className="text-white">{renderContent()}</div>
       </div>
     </div>
   );

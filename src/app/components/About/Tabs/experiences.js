@@ -3,7 +3,11 @@ const experiences = [
     title: "AI Engineer",
     company: "Soca AI",
     date: "Feb 2023 - Jun 2023",
-    points: ["a", "b", "c"],
+    points: [
+      "Developed AI models for detecting offensive words using TensorFlow over a period of three months. This process involved collecting datasets, performing data preprocessing, and building and fine-tuning the models.",
+      "Created backend services using Flask and integrated with a MongoDB as a database, which took one month. The backend services were designed to interface with the AI models for offensive words.",
+      "Projects were uploaded on GitLab and involved collaboration with other team members.",
+    ],
   },
 ];
 
@@ -24,11 +28,9 @@ export default function Experience() {
               </h4>
               <p className="text-xs mb-4 font-thin">{experiences.date}</p>
               <p>{experiences.description}</p>
-              <ul className="list-disc list-inside">
+              <ul className="mb-3 list-disc pl-5 font-normal text-justify">
                 {experiences.points.map((point, idx) => (
-                  <li key={idx} className="text-sm mb-1">
-                    {point}
-                  </li>
+                  <li key={idx}>{point}</li>
                 ))}
               </ul>
             </div>

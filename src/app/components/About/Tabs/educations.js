@@ -1,11 +1,12 @@
 const educations = [
   {
     major: "Computer Engineering",
-    institution: "Universitas Pendidikan Indonesia",
-    date: "Sep 2020 - Aug 2024",
+    institution: "Indonesia University of Education",
+    date: "Sep 2020 - Now",
     points: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Bachelor's degree in Computer Engineering with a GPA of 3.75/4.00 over 146 credits. ",
+      "Actively assisted in study program accreditation.",
+      "Participated in various committee activities to support the campus and community.",
     ],
   },
   {
@@ -13,8 +14,8 @@ const educations = [
     institution: "Orbit Future Academy",
     date: "Aug 2022 - Dec 2022",
     points: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Created models related to Data Science, Natural Language Processing, and Computer Vision, completing one project each month.",
+      "Developed a website using Flask for attendance tracking with face recognition using CNN, completing this project within one month.",
     ],
   },
 ];
@@ -34,11 +35,9 @@ export default function Educations() {
                 {educations.institution}
               </h4>
               <p className="text-xs mb-4 font-thin">{educations.date}</p>
-              <ul className="list-disc list-inside">
+              <ul className="mb-3 list-disc pl-5 font-normal text-justify">
                 {educations.points.map((point, idx) => (
-                  <li key={idx} className="text-sm mb-1">
-                    {point}
-                  </li>
+                  <li key={idx}>{point}</li>
                 ))}
               </ul>
             </div>

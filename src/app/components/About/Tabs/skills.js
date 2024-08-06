@@ -14,6 +14,7 @@ import bootstraplogo from "../../../assets/bootstrap.svg";
 import tailwindlogo from "../../../assets/tailwind.svg";
 import phplogo from "../../../assets/php.svg";
 import nextlogo from "../../../assets/next.svg";
+import gitlogo from "../../../assets/git.svg";
 
 const skills = [
   { name: "C++", logo: cpplogo },
@@ -31,18 +32,19 @@ const skills = [
   { name: "PHP", logo: phplogo },
   { name: "JavaScript", logo: javascriptlogo },
   { name: "NextJS", logo: nextlogo },
+  { name: "Git", logo: gitlogo },
 ];
 
 export default function Skills() {
   return (
-    <div className="flex flex-wrap justify-center gap-x-4 gap-y-6">
+    <div className="flex flex-wrap justify-center gap-4 overflow-y-auto">
       {skills.map((skill, index) => (
         <div
           key={index}
-          className=" bg-gray-800 rounded-lg shadow-md flex flex-col justify-center items-center w-32 h-32"
+          className=" bg-gray-700 rounded-lg shadow-md flex flex-col justify-center items-center w-32 h-32 hover:bg-blue-500 transition duration-300 ease-in-out"
         >
           <Image src={skill.logo} alt={skill.name} width={50} height={50} />
-          <p className="text-white text-lg mt-4">{skill.name}</p>
+          <p className="text-white text-md mt-4">{skill.name}</p>
         </div>
       ))}
     </div>
